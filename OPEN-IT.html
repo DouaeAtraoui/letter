@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You</title>
+  <style>
+    body {
+      background-color: #fce4ec;
+      background-size: cover;
+      font-family: 'Georgia', cursive;
+      color: #333;
+      padding: 40px;
+      text-align: center;
+    }
+    .envelope {
+  width: 300px;
+  height: 200px;
+  background: #fff;
+  border: 2px solid #c94f7c;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  perspective: 1000px;
+}
+
+    .flap {
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 150px solid #c94f7c;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top;
+  transition: transform 0.5s ease;
+}
+
+.letter {
+  display: none;
+  width: 400px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeIn 1s ease-in-out;
+}
+
+    .envelope.open .flap {
+      transform: rotateX(-180deg);
+    }
+    .envelope.open {
+      opacity: 0;
+      transition: opacity 1s ease 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div class="envelope" onclick="openEnvelope()">
+    <div class="flap"></div>
+  </div>
+
+  <div class="letter" id="letter">
+    <h1>To the Love of My Life</h1>
+    <p>
+      I love you everyday 💖. <br>
+      I miss u cuz you are not here with me 😩. <br>
+      There may be a million things to smile about, but you're my favorite one 😁. <br>
+      Everything is better with you 🔥. <br>
+      💋 Muuuuaaaaah 💋
+    </p>
+  </div>
+
+  <script>
+    function openEnvelope() {
+      document.querySelector('.envelope').classList.add('open');
+      setTimeout(function() {
+        document.getElementById('letter').style.display = 'block';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
