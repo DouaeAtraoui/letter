@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +10,9 @@
       background-size: cover;
       font-family: 'Georgia', cursive;
       color: #333;
-      padding: 40px;
+      padding: 20px;
       text-align: center;
+      overflow: hidden
     }
     .envelope {
   width: 300px;
@@ -43,7 +43,8 @@
 
 .letter {
   display: none;
-  width: 400px;
+  width: 80vw;
+max-width: 400px;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -62,6 +63,25 @@
       opacity: 0;
       transition: opacity 1s ease 0.5s;
     }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .heart {
+      width: 30px;
+      height: 30px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+      background-size: contain;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: floatUp 5s infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translate(-50%, 0); opacity: 1; }
+      100% { transform: translate(-50%, -100vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -76,6 +96,7 @@
       I miss u cuz you are not here with me 😩. <br>
       There may be a million things to smile about, but you're my favorite one 😁. <br>
       Everything is better with you 🔥. <br>
+      Everything I feel for you has grown since day 1 🌹. <br>
       💋 Muuuuaaaaah 💋
     </p>
   </div>
@@ -85,7 +106,18 @@
       document.querySelector('.envelope').classList.add('open');
       setTimeout(function() {
         document.getElementById('letter').style.display = 'block';
+        createHearts();
       }, 1000);
+    }
+    function createHearts() {
+      for (let i = 0; i < 20; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
     }
   </script>
 </body>
